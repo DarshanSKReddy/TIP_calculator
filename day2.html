@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Tip Calculator</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-radius: 12px;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        .btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            background: #e0f7fa;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        .result strong {
+            font-size: 18px;
+        }
+        .downloads a {
+            display: inline-block;
+            margin-top: 10px;
+            margin-right: 10px;
+            text-decoration: none;
+            padding: 10px 15px;
+            background: #28a745;
+            color: white;
+            border-radius: 8px;
+        }
+        .downloads a:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Advanced Tip Calculator</h2>
+    <form method="post">
+        <label>Total Bill ($):</label>
+        <input type="number" name="bill" step="0.01" required>
+
+        <label>Tip Percentage:</label>
+        <input type="number" name="tip" required>
+
+        <label>Number of People:</label>
+        <input type="number" name="people" required>
+
+        <button type="submit" class="btn">Calculate</button>
+    </form>
+
+    {% if result %}
+    <div class="result">
+        <h3>Result:</h3>
+        <p>Total Bill: ${{ result.bill }}</p>
+        <p>Tip Percentage: {{ result.tip }}%</p>
+        <p>Tip Amount: ${{ result.tip_amount }}</p>
+        <p>Total Bill with Tip: ${{ result.total_bill }}</p>
+        <p><strong>Each Person Pays: ${{ result.bill_per_person }}</strong></p>
+
+        <div class="downloads">
+            <a href="/download_pdf">Download PDF</a>
+            <a href="/download_image">Download Image</a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
+
+
